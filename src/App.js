@@ -25,30 +25,7 @@ const INIT_STATE = [  //DATA FROM BACKENd-beckendтен келген данны�
 		amount: 200,
 		date: new Date(2024, 2, 14),
 	},
-	{
-		id: 'e4',
-		title: 'Lexus1',
-		amount: 499,
-		date: new Date(2022, 3, 2),
-	},
-	{
-		id: 'e5',
-		title: 'Lexus2',
-		amount: 2000,
-		date: new Date(2025, 4, 20),
-	},
-	{
-		id: 'e6',
-		title: 'Lexus3',
-		amount: 1500,
-		date: new Date(2024, 6, 10),
-	},
-	{
-		id: 'e7',
-		title: 'Lexus4',
-		amount: 1999,
-		date: new Date(2022, 8, 13),
-	},
+	
 ]
 
 
