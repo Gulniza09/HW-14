@@ -4,6 +4,8 @@ const ExpenseForm = (props) => {
 	const [title, setTitle] = useState('')
 	const [amount, setAmount] = useState('')
 	const [date, setDate] = useState('')
+	const [show,setShow]=useState(false)
+
 
 	// __________VERSION 1____________
 	const inputChangeHandler = (event) => { // События журуп жатат
@@ -27,8 +29,10 @@ const ExpenseForm = (props) => {
 		}
 		props.onSaveExpenseData(dataWithId)  // currentData га биздин данныйлар келет аны пропс аркылуу onSaveExpenseData берип жатабыз 
 	}
-	return (
-		<form onSubmit={submitHandler}> 
+	let showExpenses 
+	if(show){
+		showExpenses =(
+			<>
 			<div className='new-expense__controls'>
 				<div className='new-expense__control'>
 					<label>Title</label> {/*Название инпута  */}
@@ -61,7 +65,19 @@ const ExpenseForm = (props) => {
 			</div>
 			<div className='new-expense__actions'>
 				<button type='submit'>Add Expense</button> {/* Add Expense деген кнопка */}
+				<button onClick={()=>setShow(false)}>Cencel</button>
 			</div>
+			</>
+		)
+	}else{
+		showExpenses=(
+			<button onClick={()=>setShow(true)}>Add new expense</button>
+		)
+	}
+	
+	return (
+		<form onSubmit={submitHandler}> 
+			{showExpenses}
 		</form>
 	)
 }

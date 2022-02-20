@@ -1,5 +1,6 @@
-import Chart from "../Chart/Chart";
-const ExpensesChart = (props) => { // Бул компонент Ар бир айда канча рассход болгону жонундо диаграмма тузот
+import Chart from '../Chart/Chart'
+const ExpensesChart = (props) => {
+	// Бул компонент Ар бир айда канча рассход болгону жонундо диаграмма тузот
 	const chartDataPoints = [
 		{ label: 'Jan', value: 0 },
 		{ label: 'Feb', value: 0 },
@@ -14,12 +15,20 @@ const ExpensesChart = (props) => { // Бул компонент Ар бир ай
 		{ label: 'Nov', value: 0 },
 		{ label: 'Dec', value: 0 },
 	]
-	for (const expense of props.expenses) {
-		// массивдин устунон итерация кылабыз
-		const expenseMonth = expense.date.getMonth(); //starting at 0 january => 0
-		chartDataPoints[expenseMonth].value += expense.amount; // массив аркылуу переменныйдан келген маалыматты алабыз и ага value ну кошуп коёбуз
+	if (props.filteredYear === 'All') {
+		for (const expense of props.allExpenses) {
+			const expenseMonth = expense.date.getMonth()
+			chartDataPoints[expenseMonth].value += expense.amount
+		}
+	} else if (props.filteredYear !== 'All') {
+		for (const expense of props.expenses) {
+			// массивдин устунон итерация кылабыз
+			const expenseMonth = expense.date.getMonth() //starting at 0 january => 0
+			chartDataPoints[expenseMonth].value += expense.amount // массив аркылуу переменныйдан келген маалыматты алабыз и ага value ну кошуп коёбуз
+		}
 	}
-	return <Chart dataPoints ={chartDataPoints}/>  // dataPoints деген props алат chartDataPoints ичинде биз берген данныйлар бар
+
+	return <Chart dataPoints={chartDataPoints} /> // dataPoints деген props алат chartDataPoints ичинде биз берген данныйлар бар
 }
 
 export default ExpensesChart
